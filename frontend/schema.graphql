@@ -1,0 +1,16 @@
+type MessageGql {
+  text: String!
+  id: ID!
+}
+
+type Mutation {
+  postMessage(text: String!): MessageGql!
+}
+
+type Query {
+  messages: [MessageGql!]!
+}
+
+type Subscription {
+  messagePosted: MessageGql!
+}

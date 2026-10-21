@@ -1,0 +1,35 @@
+{
+  "name": "frontend",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "npm run relay:schema && npm run relay:compile && astro dev",
+    "build": "npm run relay:compile && astro build",
+    "preview": "astro preview",
+    "relay:schema": "cd ../backend && uv run python -c 'from app.schema import schema; print(schema)' > ../frontend/schema.graphql",
+    "relay:compile": "mkdir -p src/__generated__ && relay-compiler",
+    "relay:watch": "relay-compiler --watch"
+  },
+  "dependencies": {
+    "@astrojs/react": "^5.0.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^6.1.1",
+    "graphql": "^16.14.2",
+    "graphql-ws": "^6.0.8",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-relay": "^21.0.1",
+    "relay-runtime": "^21.0.1"
+  },
+  "devDependencies": {
+    "babel-plugin-relay": "^21.0.1",
+    "relay-compiler": "^21.0.1",
+    "vite": "^7.3.2",
+    "vite-plugin-relay": "^2.1.0"
+  }
+}
